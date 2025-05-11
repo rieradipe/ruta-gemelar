@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class JournalServiceTest {
 
@@ -47,11 +48,11 @@ public class JournalServiceTest {
                 .usuaria(usuaria)
                 .build();
 
-                //con JWT simulamos que  tiene la ID usuaria
+        //con JWT simulamos que  tiene la ID usuaria
         when(jwtService.getUserIdFromToken("Bearer token"))
                 .thenReturn(1L);
 
-                //simulams que save devuelve la mism entrada
+        //simulams que save devuelve la mism entrada
         when(journalRepository.save(any(JournalEntry.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));
 
@@ -109,4 +110,77 @@ public class JournalServiceTest {
 
         verify(journalRepository, times(1)).findByUsuariaOrderByFechaDesc(any(User.class));
     }
+
+    @Test
+    void debeActualizarEntradaPropia() {
+        //arrange
+        User usuaria = User.builder()
+                .id(1L)
+                .email("ana@gmail.com")
+                .build();
+
+        JournalEntry entradaExiste = JournalEntry.builder()
+                .id(22L)
+                .fecha(LocalDate.of(2025, 05, 10))
+                .emocion("agotada")
+                .nota("Dia muy duro")
+                .usuaria(usuaria)
+                .build();
+
+        JournalEntry nuevaEntrada = JournalEntry.builder()
+                .fecha(LocalDate.of(2025, 5, 11))
+                .emocion("mas tranquila")
+                .nota("mejore un poco")
+                .build();
+
+        //simulamos que el token pertenene a la usuaria 1
+        when(jwtService.getUserIdFromToken("Bearer token"))
+                .thenReturn(1L);
+
+        //simulamos que encontramos la entrada y le pertenece
+        when(journalRepository.findById(22L))
+                .thenReturn(Optional.of(entradaExiste));
+
+        //similamos que guardamos la entrada actualizda
+        when(journalRepository.save(any(JournalEntry.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+
+        //act
+        JournalEntry resultado = journalService.actualizarEntrada(22L, nuevaEntrada, "Bearer token");
+        //assert
+        assertEquals((LocalDate.of(2025, 5, 11)), resultado.getFecha());
+        assertEquals("mas tranquila", resultado.getEmocion());
+        assertEquals("mejoré un poco", resultado.getNota());
+        assertEquals(1L, resultado.getUsuaria().getId());
+
+        verify(journalRepository, times(1)).save(any(JournalEntry.class));
+    }
+
+    @Test
+    void debeEliminarEntradaPropia() {
+        //arrange
+        User usuaria = User.builder()
+                .id(1L)
+                .email("ana@gmail.com")
+                .build();
+
+        JournalEntry entradaExiste = JournalEntry.builder()
+                .id(22L)
+                .fecha(LocalDate.of(2025, 5, 10))
+                .emocion("agotada")
+                .nota("Día duro")
+                .usuaria(usuaria)
+                .build();
+
+        when(jwtService.getUserIdFromToken("Bearer token"))
+                .thenReturn(1L);
+        when(journalRepository.findById(22L))
+                .thenReturn(Optional.of(entradaExiste));
+
+        //act
+        journalService.eliminarEntrada(22L, "Bearer token");
+        //assert
+        verify(journalRepository, times(1)).delete(entradaExiste);
+    }
 }
+
