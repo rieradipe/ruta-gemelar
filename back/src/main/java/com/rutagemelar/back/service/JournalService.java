@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.rutagemelar.back.model.User;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class JournalService {
@@ -20,5 +22,14 @@ public class JournalService {
         entrada.setUsuaria(usuaria);
 
         return journalRepository.save(entrada);
+    }
+
+    public List<JournalEntry> obtenerEntradas(String token) {
+        Long userId = jwtService.getUserIdFromToken(token);
+
+        User usuaria = new User();
+        usuaria.setId(userId);
+
+        return journalRepository.findByUsuariaOrderByFechaDesc(usuaria);
     }
 }

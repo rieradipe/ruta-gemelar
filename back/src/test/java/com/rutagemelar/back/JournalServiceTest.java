@@ -1,5 +1,8 @@
 package com.rutagemelar.back;
 
+import java.util.List;
+import java.util.Arrays;
+
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,6 +34,7 @@ public class JournalServiceTest {
 
     @Test
     void debeCrearEntradaDiario() {
+        //arrenge
         User usuaria = User.builder()
                 .id(1L)
                 .email("ana@gmail.com")
@@ -62,5 +66,47 @@ public class JournalServiceTest {
 
         //verificamos que se llamo a .save exactamente una vez
         verify(journalRepository, times(1)).save(any(JournalEntry.class));
+    }
+
+    @Test
+    void debeObtenerEntradaDeUsuaria() {
+        //arrange
+        User usuaria = User.builder()
+                .id(1L)
+                .email("ana@gmail.com")
+                .build();
+
+        JournalEntry entrada1 = JournalEntry.builder()
+                .fecha(LocalDate.of(2025, 5, 11))
+                .emocion("tranquila")
+                .nota("Día estable")
+                .usuaria(usuaria)
+                .build();
+
+        JournalEntry entrada2 = JournalEntry.builder()
+                .fecha(LocalDate.of(2025, 05, 10))
+                .emocion("agotada")
+                .nota("mucho cansancio")
+                .usuaria(usuaria)
+                .build();
+
+        List<JournalEntry> entradas = List.of(entrada1, entrada2);
+
+
+        when(jwtService.getUserIdFromToken("Bearer token"))
+                .thenReturn(1L);
+
+        when(journalRepository.findByUsuariaOrderByFechaDesc(usuaria))
+                .thenReturn(entradas);
+
+        //act
+        List<JournalEntry> resultado = journalService.obtenerEntradas("Bearer token");
+
+        //assert
+        assertEquals(2, resultado.size());
+        assertEquals("tranquila", resultado.get(0).getEmocion());
+        assertEquals("agotada", resultado.get(1).getEmocion());
+
+        verify(journalRepository, times(1)).findByUsuariaOrderByFechaDesc(any(User.class));
     }
 }
