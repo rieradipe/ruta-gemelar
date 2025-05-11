@@ -17,6 +17,14 @@ public class AuthService {
 
     public AuthResponse login(LoginRequest request) {
         //implementar despues del TDD
-        return null;
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("Credenciales inválidas"));
+
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+            throw new IllegalArgumentException("Credenciales inválidas");
+        }
+
+        String token = jwtService.generateToken(user);
+        return new AuthResponse(token);
     }
 }
