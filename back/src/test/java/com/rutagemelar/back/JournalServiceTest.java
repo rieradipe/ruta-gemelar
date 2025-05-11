@@ -182,5 +182,17 @@ public class JournalServiceTest {
         //assert
         verify(journalRepository, times(1)).delete(entradaExiste);
     }
+    void debeLanzarErrorSiEntradaNoExiste() {
+        when(jwtService.getUserIdFromToken("Bearer tpken"));
+
+        //simulamos que la entrada no existe
+        when(journalRepository.findById(99L))
+                .thenReturn(Optional.empty());
+
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            journalService.eliminarEntrada(99L, "Bearer token");
+        });
+        assertEquals("Entrada no encontrada", ex.getMessage());
+    }
 }
 
