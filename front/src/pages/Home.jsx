@@ -1,0 +1,45 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Boton from "../assets/componentes/Boton";
+
+
+function Home() {
+  const navigate = useNavigate();
+
+return (
+    <div className="min-h-screen bg-[#FDF7F1] flex flex-col items-center justify-center px-4 py-4 space-y-4">
+        <h1 className="text-3xl font-bold text-[#B6654F] font-Merri">Ruta Gemelar</h1>
+
+        <p className="text-center text-[#3A3F58] text-lg italic">El camino <span className="text-[#B6654F] font-semibold">invisible</span> de las madres múltiples </p>
+
+        <img src="/ImageHome.jpg"
+        alt="Bebes gemelos simulando un embarazo abanzado"
+        className="w-40 h-40 object-contain rounded-[15px] border-2 border-[#B6654F]" />
+
+        <p className="text-center text-sm text-[#3A3F58] px-4">
+            Ruta Gemelar nace del deseo de acompañar y visibilizar el camino emocional de los embarazos múltiples.
+            Una experiencia profunda, desafiante y a menudo solitaria, que nuestra creadora vivió en primera persona.
+            Esta app es un espacio íntimo para reflexionar, registrar emociones y sentirse menos sola en el viaje.
+        </p>
+        <div className="flex gap-3 justify-center w-full max-w-xs">
+            <Boton texto="Registrarse"
+            primario
+            onClick= { () => navigate("/Register")}
+            className="w-full rounded-[15px]"
+            />
+
+
+            <Boton texto="Iniciar sesión"
+            primario
+            onClick= { () =>  navigate("/Login")} 
+            className="w-full rounded-[15px]"
+            />
+        </div>
+        <img src="/logoLunas.png"
+        alt="Logo de ruta gemelar que son dos lunas casi unidas"
+        className="h-8 opacity-60"/>
+        
+    </div>
+);
+}
+export default Home;

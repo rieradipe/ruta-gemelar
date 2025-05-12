@@ -5,5 +5,9 @@ module.exports = {
       extend: {},
     },
     plugins: [],
+    fontFamily: {
+      merri: ['Merriweather', 'serif'],
+    },
+    
   }
   
