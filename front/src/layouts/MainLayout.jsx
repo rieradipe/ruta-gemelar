@@ -6,13 +6,13 @@ import Footer from "../assets/componentes/Footer";
 
 const MainLayout = () => {
     return (
-        <>
+        <div className="layout">
         <Header />
         <main className="main-content">
             <Outlet />
             </main>
             <Footer />
-            </>
+            </div>
     );
 };
 

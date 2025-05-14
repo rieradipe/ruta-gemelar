@@ -19,20 +19,20 @@ return (
             Una experiencia profunda, desafiante y a menudo solitaria, que nuestra creadora vivió en primera persona.
             Esta app es un espacio íntimo para reflexionar, registrar emociones y sentirse menos sola en el viaje.
         </p>
-        <div className="flex gap-3 justify-center w-full max-w-xs">
-            <Boton texto="Registrarse"
+        <div className="flex gap-4 justify-center mt-6">
+            <Boton 
+            texto="Registrarse"
             tipo="primario"
             forma="normal"
             onClick= { () => navigate("/Register")}
-            className="w-full rounded-[15px]"
             />
 
 
-            <Boton texto="Iniciar sesión"
+            <Boton 
+            texto="Iniciar sesión"
             tipo="primario"
             forma="normal"
             onClick= { () =>  navigate("/Login")} 
-            className="w-full rounded-[15px]"
             />
         </div>
         
