@@ -1,13 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Boton from "../assets/componentes/Boton";
+import Boton  from "../assets/componentes/Boton";
+
 
 
 function Home() {
   const navigate = useNavigate();
 
 return (
-<main>
+    <main>
+  
         <img src="/ImageHome.jpg"
         alt="Bebes gemelos simulando un embarazo abanzado"
         className="w-40 h-40 object-contain rounded-[15px] border-2 border-[#B6654F]" />
@@ -33,11 +35,11 @@ return (
             className="w-full rounded-[15px]"
             />
         </div>
-        <img src="/logoLunas.png"
-        alt="Logo de ruta gemelar que son dos lunas casi unidas"
-        className="h-8 opacity-60"/>
         
     </main>
+
+    
 );
+
 }
 export default Home;

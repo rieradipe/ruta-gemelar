@@ -1,0 +1,30 @@
+.footer {
+    background-color: #fdf7f1;
+    color: #b6654f;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.footer-logo-container {
+    display: flex;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.footer-logo-container img {
+    max-height: 100%;
+    width: auto;
+}
+@media (max-width: 640px) {
+    .footer-logo-container {
+        height: 30px;
+    }
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
