@@ -7,11 +7,7 @@ function Home() {
   const navigate = useNavigate();
 
 return (
-    <div className="min-h-screen bg-[#FDF7F1] flex flex-col items-center justify-center px-4 py-4 space-y-4">
-        <h1 className="text-3xl font-bold text-[#B6654F] font-Merri">Ruta Gemelar</h1>
-
-        <p className="text-center text-[#3A3F58] text-lg italic">El camino <span className="text-[#B6654F] font-semibold">invisible</span> de las madres múltiples </p>
-
+<main>
         <img src="/ImageHome.jpg"
         alt="Bebes gemelos simulando un embarazo abanzado"
         className="w-40 h-40 object-contain rounded-[15px] border-2 border-[#B6654F]" />
@@ -23,14 +19,16 @@ return (
         </p>
         <div className="flex gap-3 justify-center w-full max-w-xs">
             <Boton texto="Registrarse"
-            primario
+            tipo="primario"
+            forma="normal"
             onClick= { () => navigate("/Register")}
             className="w-full rounded-[15px]"
             />
 
 
             <Boton texto="Iniciar sesión"
-            primario
+            tipo="primario"
+            forma="normal"
             onClick= { () =>  navigate("/Login")} 
             className="w-full rounded-[15px]"
             />
@@ -39,7 +37,7 @@ return (
         alt="Logo de ruta gemelar que son dos lunas casi unidas"
         className="h-8 opacity-60"/>
         
-    </div>
+    </main>
 );
 }
 export default Home;

@@ -1,33 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Boton from "./Boton";
+import "./Header.css";
 
 const Header = () => {
   const estaLogueada = true; //añadimos logica token
 
   return (
-    <header className="bg-[#FDF7F1] h-full shadow p-4 flex flex-col items-center justify-between px-8">
-      <div className="flex justify-between">
-        <div className="flex flex-col justify-center">
-          <h1 className="text-2xl font-bold text-[#B6654F]">Ruta Gemelar</h1>
-          <p className="text-[3af558] mt-2 italic">
-            El camino <span className="text-[#B6654F]">invisible</span> de las
+    <header className="header">
+      <div className="header-iner">
+      <div className="header-text">
+          <h1>Ruta Gemelar</h1>
+          <p>
+            El camino <span className="highlight">invisible</span> de las
             madres múltiples
           </p>
         </div>
         {estaLogueada && (
-          <nav className="mt-4">
+          <nav className="header-nav">
             <Link to="/diario">
-              <Boton
+              <Boton 
                 texto="Ir al Diario"
                 tipo="primario"
                 forma="redondo"
-                className="px-6 py-3"
               />
             </Link>
           </nav>
         )}
-      </div>
+        </div>
     </header>
   );
 };
