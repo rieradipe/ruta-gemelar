@@ -1,45 +1,36 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import Boton  from "../assets/componentes/Boton";
 
+import Boton from "../assets/componentes/Boton";
 
 
 function Home() {
-  const navigate = useNavigate();
+ 
 
-return (
-    <main>
-  
-        <img src="/ImageHome.jpg"
-        alt="Bebes gemelos simulando un embarazo abanzado"
-        className="w-40 h-40 object-contain rounded-[15px] border-2 border-[#B6654F]" />
+  return (
+    <div className="flex flex-col items-center text-center px-4">
+    <img
+      src="/ImageHome.jpg"
+      alt="Bebés gemelos simulando un embarazo avanzado"
+      className="w-40 h-40 object-contain rounded-[15px] border-2 border-[#B6654F] mb-4"
+    />
 
-        <p className="text-center text-sm text-[#3A3F58] px-4">
-            Ruta Gemelar nace del deseo de acompañar y visibilizar el camino emocional de los embarazos múltiples.
-            Una experiencia profunda, desafiante y a menudo solitaria, que nuestra creadora vivió en primera persona.
-            Esta app es un espacio íntimo para reflexionar, registrar emociones y sentirse menos sola en el viaje.
-        </p>
-        <div className="flex gap-4 justify-center mt-6">
-            <Boton 
-            texto="Registrarse"
-            tipo="primario"
-            forma="normal"
-            onClick= { () => navigate("/Register")}
-            />
+    <p className="text-sm text-[#3A3F58] mb-4">
+      Ruta Gemelar nace del deseo de acompañar y visibilizar el camino emocional de los embarazos múltiples.
+      Una experiencia profunda, desafiante y a menudo solitaria, que nuestra creadora vivió en primera persona.
+      Esta app es un espacio íntimo para reflexionar, registrar emociones y sentirse menos sola en el viaje.
+    </p>
 
+    <p className="text-center mt-4 text-[#3A3F58]">
+      Bienvenida a la app. Aquí puedes explorar, registrar, y reflexionar.
+    </p>
 
-            <Boton 
-            texto="Iniciar sesión"
-            tipo="primario"
-            forma="normal"
-            onClick= { () =>  navigate("/Login")} 
-            />
-        </div>
-        
-    </main>
-
-    
+    <div className="flex gap-4 justify-center mt-6">
+      <Boton texto="Iniciar sesión" tipo="primario" to="/login" />
+      <Boton texto="Registrarse" tipo="secundario" to="/registro" />
+    </div>
+  </div>
 );
-
 }
+    
+  
 export default Home;
