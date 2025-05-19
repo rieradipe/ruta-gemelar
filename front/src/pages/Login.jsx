@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Boton from "../assets/componentes/Boton";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -50,12 +51,12 @@ const Login = () => {
           required
         />
       </div>
-      <button
+      <Boton
+        texto="---Guardar---"
+        tipo="secundario"
+        forma="redondo"
         type="submit"
-        className="bg-[#B6654F] text-white px-6 py-2 rounded-lg hover:bg-[#a3503c] shadow"
-      >
-        Entrar
-      </button>
+      />
     </form>
   );
 };

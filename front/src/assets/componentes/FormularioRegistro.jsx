@@ -26,7 +26,7 @@ const FormularioRegistro = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-6 bg-white border-[3px] border-[#B6654F] rounded-2xl shadow-lg w-full max-w-2xl px-10  py-12"
+      className="flex flex-col gap-6 items-center bg-white border-[3px] border-[#B6654F] rounded-2xl shadow-lg w-full max-w-2xl px-10  py-12"
     >
       {[
         { name: "nombre", label: "Nombre:", type: "text" },
@@ -47,7 +47,7 @@ const FormularioRegistro = () => {
         <div key={name} className="flex flex-col gap-1 w-full max-w-md mx-auto">
           <label
             htmlFor={name}
-            className="text-[#3A3F58] font-semibold text-lg mb-1"
+            className="text-[#3A3F58] font-semibold text-base mb-1"
           >
             {label}
           </label>
@@ -58,7 +58,7 @@ const FormularioRegistro = () => {
             value={form[name]}
             onChange={handleChange}
             required
-            className="w-full border-[2px] border-[#B6654F] rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#B6654F]"
+            className="w-full min-w-0 border-[2px] border-[#B6654F] rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#B6654F]"
           />
         </div>
       ))}

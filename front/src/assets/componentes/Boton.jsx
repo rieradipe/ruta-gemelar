@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-function Boton({ texto, to, onClick, tipo, forma, className }) {
-  const base = "box-border font-semibold text-lg transition duration-200 no-underline w-[20ch] text-center";
+function Boton({ texto, to, onClick, tipo, forma, className, type }) {
+  const base =
+    "inline-block font-semibold text-base text-center px-6 py-2 transition durantion-200 no-underline";
   const estilo =
     tipo === "primario"
       ? "bg-[#B6654F] text-white"
       : "bg-white text-[#B6654F] border-2 border-[#B6654F]";
 
-  const redondez = forma === "redondo" ? "rounded-full" : "rounded-[15px]";
+  const redondez = forma === "redondo" ? "rounded-full" : "rounded-[xl]";
 
   const hover =
     tipo === "primario"
-      ? "hover:bg-white hover:text-[#B6654F] hover:border-[#B6654F]"
+      ? "hover:bg-[#a3503c] hover:text-white"
       : "hover:bg-[#B6654F] hover:text-white";
 
   const classes = `${base} ${estilo} ${redondez} ${hover} ${className}`;
@@ -26,6 +27,7 @@ function Boton({ texto, to, onClick, tipo, forma, className }) {
 
   return (
     <button
+      type={type}
       className={`${base} ${estilo} ${redondez} ${hover} ${className}`}
       onClick={onClick}
     >
@@ -37,6 +39,7 @@ Boton.defoultProps = {
   tipo: "primario",
   forma: "normal",
   className: "",
+  typo: "button",
 };
 
 export default Boton;

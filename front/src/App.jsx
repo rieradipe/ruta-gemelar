@@ -15,7 +15,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="registro" element={<Registro />} />
         <Route path="login" element={<Login />} />
-        <Route path="calendario" element={<CalendarioUsuaria />} />
+        <Route path="CalendarioUsuaria" element={<CalendarioUsuaria />} />
         <Route path="semana" element={<Semana />} />
         <Route path="diario" element={<Diario />} />
       </Route>
