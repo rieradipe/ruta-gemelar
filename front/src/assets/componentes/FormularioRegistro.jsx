@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 const FormularioRegistro = () => {
   const [form, setForm] = useState({
     nombre: "",
@@ -27,7 +26,7 @@ const FormularioRegistro = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full max-w-[400] rounded-xl shadow p-6 flex flex-col gap-4"
+      className="flex flex-col gap-6 bg-white border-[3px] border-[#B6654F] rounded-2xl shadow-lg w-full max-w-2xl px-10  py-12"
     >
       {[
         { name: "nombre", label: "Nombre:", type: "text" },
@@ -38,12 +37,17 @@ const FormularioRegistro = () => {
           label: "Repite tu contraseña",
           type: "password",
         },
-        { name: "fpp", label: "Fecha probable de parto:", type: "date" },
+        {
+          name: "fpp",
+          label: "Fecha probable de parto:",
+
+          type: "date",
+        },
       ].map(({ name, label, type }) => (
-        <div key={name} className="flex flex-col">
+        <div key={name} className="flex flex-col gap-1 w-full max-w-md mx-auto">
           <label
             htmlFor={name}
-            className="text font-semibold  mb-1 pl-4"
+            className="text-[#3A3F58] font-semibold text-lg mb-1"
           >
             {label}
           </label>
@@ -53,8 +57,8 @@ const FormularioRegistro = () => {
             name={name}
             value={form[name]}
             onChange={handleChange}
-            className="text-sm border border-[#B6654F] rounded-lg px-3 py-1 focus:outline-none focus:ring-1 focus:ring-[#B6654F]"
             required
+            className="w-full border-[2px] border-[#B6654F] rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#B6654F]"
           />
         </div>
       ))}

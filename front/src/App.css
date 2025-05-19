@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
+  background-color: #FDF7F1;
   height: 100%;
   margin: 0;
 }
@@ -15,4 +17,8 @@ html, body {
 
 .main-content {
   flex: 1;
+}
+
+* {
+  box-sizing: border-box;
 }
