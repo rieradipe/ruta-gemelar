@@ -5,7 +5,6 @@ import Registro from "./pages/Registro";
 import Login from "./pages/Login";
 import CalendarioUsuaria from "./pages/CalendarioUsuaria";
 import Semana from "./pages/Semana";
-import "./App.css";
 import Diario from "./pages/Diario";
 
 function App() {

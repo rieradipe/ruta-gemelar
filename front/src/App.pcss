@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-principal: #b6654f;
+  --fondo-base: #fdf7f1;
+  --padding-general: 1rem;
+  --margen-general: 1rem;
+  --fuente-principal: "Merriweather", serif;
+}
+
+body {
+  background-color: #fdf7f1;
+  font-family: var(--fuente-principal);
+  background-color: var(--fondo-base);
+  padding: var(--padding-general);
+  margin: 0;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+* {
+  box-sizing: border-box;
+}

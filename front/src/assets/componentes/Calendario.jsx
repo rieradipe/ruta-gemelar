@@ -55,7 +55,7 @@ function Calendario() {
         {days.map((day, idx) => (
           <div
             key={idx}
-            className={`aspect-square w-12 flex items-center justify-center border-2 rounded-xl shadow-md text-xs font-semibold transition
+            className={`
         ${
           day.month() !== currentMonth.month()
             ? "text-gray-300 border-gray-200"
