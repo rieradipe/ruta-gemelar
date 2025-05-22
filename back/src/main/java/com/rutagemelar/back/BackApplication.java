@@ -8,7 +8,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class BackApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(BackApplication.class, args);
 	}
@@ -18,3 +17,4 @@ public class BackApplication {
 		return new BCryptPasswordEncoder();
 	}
 }
+

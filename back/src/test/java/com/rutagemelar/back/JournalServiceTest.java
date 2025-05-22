@@ -13,24 +13,27 @@ import com.rutagemelar.back.service.JournalService;
 import com.rutagemelar.back.service.JwtService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-
+import com.rutagemelar.back.repository.UserRepository;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 
 import java.time.LocalDate;
 import java.util.Optional;
+@ExtendWith(MockitoExtension.class)
 
 public class JournalServiceTest {
 
     private JournalRepository journalRepository;
     private JwtService jwtService;
     private JournalService journalService;
+    private UserRepository userRepository;
 
     @BeforeEach
     void setUp() {
-        journalRepository = mock(JournalRepository.class);
+        userRepository = mock(UserRepository.class);
         jwtService = mock(JwtService.class);
-        journalService = new JournalService(journalRepository, jwtService);
+        journalService = new JournalService(userRepository, journalRepository, jwtService);
     }
 
     @Test

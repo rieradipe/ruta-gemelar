@@ -5,24 +5,25 @@ import com.rutagemelar.back.repository.JournalRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.rutagemelar.back.model.User;
+import com.rutagemelar.back.repository.UserRepository;
 
 import java.util.List;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class JournalService {
+    private final UserRepository userRepository;
     private final JournalRepository journalRepository;
     private final JwtService jwtService;
 
-    public JournalEntry crearEntrada(JournalEntry entrada, String token) {
+    public JournalEntry crearEntrada(JournalEntry entry, String token) {
         Long userId = jwtService.getUserIdFromToken(token);
-
         User usuaria = new User();
         usuaria.setId(userId);
-        entrada.setUsuaria(usuaria);
-
-        return journalRepository.save(entrada);
+        entry.setUsuaria(usuaria);
+        return journalRepository.save(entry);
     }
+
 
     public List<JournalEntry> obtenerEntradas(String token) {
         Long userId = jwtService.getUserIdFromToken(token);
